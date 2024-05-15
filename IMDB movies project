@@ -1,0 +1,47 @@
+-- top 10 movies according to IMPB rating 
+select *
+from `rugged-courier-418011.IMDP.top_movies `
+order by IMDB_Rating desc 
+limit 10
+
+--the top 10 director have movies in IMPB 1000 movies list 
+select 
+Director,
+count(*) as num_of_movies 
+from `rugged-courier-418011.IMDP.top_movies `
+group by Director 
+order by num_of_movies desc
+limit 10
+
+--the top 10 star have movies in IMDB 10000 movies list 
+select 
+Star1,
+count(*) as num_of_movies 
+from `rugged-courier-418011.IMDP.top_movies `
+group by Star1
+order by num_of_movies desc
+limit 10
+
+--top 10 Genre that have the high average IMDB rating
+select
+Genre,
+avg(IMDB_Rating) as avg_rating 
+from `rugged-courier-418011.IMDP.top_movies `
+group by Genre 
+order by avg_rating desc 
+limit 10
+-- the meta score for the top 10 movies according to IMDB rating
+select 
+Series_Title,
+Meta_score
+from `rugged-courier-418011.IMDP.top_movies `
+order by IMDB_Rating desc
+limit 10
+-- the top year that have movies in IMDB list 
+select 
+Released_Year,
+count(*) as num_of_movies 
+from `rugged-courier-418011.IMDP.top_movies `
+group by Released_Year 
+order by num_of_movies desc 
+limit 10
